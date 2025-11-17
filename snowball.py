@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import logging
 import collections
 import datetime
@@ -85,7 +87,7 @@ class PaymentCalculator(object):
         self.debts = self._create_ordered_debt_objects(debts)
         self.monthly_payment = initial_monthly_payment
         self.payment_schedule = PaymentSchedule(self.debts, starting_month)
-        for period in xrange(delay_first_payment):
+        for period in range(delay_first_payment):
             for loan in self.debts:
                 loan.accrue_interest()
 
@@ -180,7 +182,7 @@ def main():
     initial_payment = 1000
     model = PaymentCalculator(debts, initial_payment, today)
     payment_schedule = model.activate()
-    print payment_schedule
+    print(payment_schedule)
 
 
 if __name__ == "__main__":
